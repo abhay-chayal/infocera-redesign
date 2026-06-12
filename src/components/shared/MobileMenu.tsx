@@ -75,7 +75,7 @@ export const MobileMenu = ({ items, isOpen, onClose }: MobileMenuProps) => {
     <div
       ref={menuRef}
       aria-hidden={!isOpen}
-      inert={!isOpen ? '' : undefined}
+      inert={!isOpen ? true : undefined}
       className={cn(
         "fixed inset-0 top-[72px] bg-[#0B1120] z-40 transition-transform duration-300 ease-in-out xl:hidden overflow-y-auto",
         isOpen ? "translate-x-0" : "translate-x-full"
