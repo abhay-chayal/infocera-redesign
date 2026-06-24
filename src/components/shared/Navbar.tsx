@@ -4,7 +4,6 @@ import { Menu, X, ChevronDown, Search } from 'lucide-react';
 import { navigationData } from '../../data/navigation';
 import { MobileMenu } from './MobileMenu';
 import { cn } from '../../utils/cn';
-import { Button } from './Button';
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -62,19 +61,17 @@ export const Navbar = () => {
             >
               {item.isMegaMenu ? (
                 <>
-                  <Link
-                    to={item.path}
+                  <button
                     className={cn(
                       "flex items-center text-[15px] font-medium transition-colors outline-none",
                       activeDropdown === item.label ? "text-purple-400" : "text-white hover:text-purple-300"
                     )}
                     aria-expanded={activeDropdown === item.label}
                     aria-haspopup="true"
-                    onClick={() => setActiveDropdown(null)}
                   >
                     {item.label}
                     <ChevronDown className={cn("w-4 h-4 ml-1 opacity-70 transition-transform duration-200", activeDropdown === item.label && "rotate-180")} />
-                  </Link>
+                  </button>
 
                   {/* Mega Menu Dropdown */}
                   <div
@@ -111,19 +108,17 @@ export const Navbar = () => {
                 </>
               ) : item.children ? (
                 <>
-                  <Link
-                    to={item.path}
+                  <button
                     className={cn(
                       "flex items-center text-[15px] font-medium transition-colors outline-none",
                       activeDropdown === item.label ? "text-purple-400" : "text-white hover:text-purple-300"
                     )}
                     aria-expanded={activeDropdown === item.label}
                     aria-haspopup="true"
-                    onClick={() => setActiveDropdown(null)}
                   >
                     {item.label}
                     <ChevronDown className={cn("w-4 h-4 ml-1 opacity-70 transition-transform duration-200", activeDropdown === item.label && "rotate-180")} />
-                  </Link>
+                  </button>
 
                   {/* Standard Dropdown */}
                   <div
@@ -163,28 +158,24 @@ export const Navbar = () => {
 
         {/* Desktop CTAs */}
         <div className="hidden xl:flex items-center space-x-6 ml-4">
-          <Button
-            href="/login"
-            variant="secondary"
-            size="sm"
-            className="bg-[#6b21a8] hover:bg-[#581c87] rounded text-[15px] shadow-none hover:shadow-none hover:-translate-y-0"
+          <Link
+            to="/login"
+            className="px-6 py-2.5 text-[15px] font-semibold bg-[#6b21a8] text-white rounded hover:bg-[#581c87] transition-all focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-[#0B1120] outline-none"
           >
             My Account
-          </Button>
-          <Button variant="ghost" size="icon" className="text-white hover:text-purple-400 hover:bg-transparent" aria-label="Search">
+          </Link>
+          <button className="text-white hover:text-purple-400 transition-colors" aria-label="Search">
             <Search className="w-5 h-5" />
-          </Button>
+          </button>
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <div className="xl:hidden flex items-center space-x-4">
-          <Button variant="ghost" size="icon" className="text-white hover:text-purple-400 hover:bg-transparent" aria-label="Search">
+          <button className="text-white hover:text-purple-400 transition-colors" aria-label="Search">
             <Search className="w-5 h-5" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative z-50 text-white hover:text-purple-400 hover:bg-transparent"
+          </button>
+          <button
+            className="relative z-50 p-2 text-white hover:text-purple-400 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-md"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-label="Toggle navigation menu"
@@ -194,7 +185,7 @@ export const Navbar = () => {
             ) : (
               <Menu className="w-7 h-7" />
             )}
-          </Button>
+          </button>
         </div>
       </div>
 
